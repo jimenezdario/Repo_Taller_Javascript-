@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DARIO  </title>
+
+<!-- CSS only -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+<!--Enlace  google fonts-->
+<link rel="preconnect"href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=pangolin&diplay=swap"rel="stylesheet">
+<!--Enlace  javascript para sweetalert-->
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class ="container">
+<h1>CALCULADORA</h1>
+<hr>
+<form >
+<label>Número 1</label>
+<input type="number" max="10000" min="0" placeholder="0" id="numero1"
+autofocus>
+<label>Número 2</label>
+<input type="number" max="10000" min="0" placeholder="0" id="numero2">
+<hr>
+<input type="button" class="btn btn-dark w-25 " onclick="Sumar()" 
+value="Sumar" required>
+<input type="button" class="btn btn-dark w-25 " onclick="Restar()" 
+value="Restar" required>
+<input type="button" class="btn btn-dark w-25 " onclick="Multiplacar()"
+value="Multiplicar"required>
+<hr>
+<input type="button" class="btn btn-dark w-25 " onclick="Division()"
+value="Division"required>
+<input type="button" class="btn btn-dark w- 25 " onclick="Potenciacion()"
+value="Potenciacion"required>
+<input type="button" class="btn btn-dark w-25 " onclick="Concatenacion()"
+value="Concatenacion"required>
+<hr>
+<input type="button"class="btn btn-dark w-25 " onclick="Instruccion_If()"
+value="instruccion if"required>
+<input type="button"class="btn btn-dark w-25 " onclick="Instruccion_For()"
+value="instruccion for" required>
+<input type="button" class="btn btn-dark w-25"
+onclick="Instruccion_switch1()" value="Instruccion switch"required>
+<hr>
+</form>
+</div>
+<!--En este div apareceran los Resultado-->
+<div id="Resultado" class="container" > </div>
+
+
+<h2> DARIO </h2>
+  
+  <script>
+
+  //Obtenemos la referencia al div con id=Resultado
+  var R=document.getElementById("Resultado");
+  
+    // Se crea funcion para cambiar las propiedades del div con id=Resultado
+    function propiedades(){
+      R.style.borderStyle="solid";
+      R.style.textAlign="center";
+      R.style.fontFamily="pangolin";
+      R.style.fontSize="30px";
+    }
+    
+    function obtenerValores(){
+    //obtenemos el valor input text con id=numero1
+    var n1=document.getElementById("numero1").value;
+    //por obtenerse como variable tipo cadena convertimos a entero de base 10
+    n1=parseInt(n1,10);
+    
+    //obtenemos el valor input text con id=numero2
+    var n2=document.getElementById("numero2").value;
+      //por obtenerse como variable tipo cadena convertimos a entero de base 10
+    n2=parseInt(n2,10);
+   return[n1,n2];
+    }
+    
+    function Sumar (){
+    [n1,n2]=obtenerValores();
+    // Llamado de funcion propiedades
+    propiedades();
+    //podemos usar n1 y n2 en la funcion ya que son variables globales
+    //Dejemos el resultados en el div que ahora lo manejamos con la  variable R
+    R.innerHTML="La suma de los numeros es: "+(n1+n2);
+    }
+    
+    function Restar(){
+    //llamdo de la funcion obtenerValores
+    [n1,n2]=obtenerValores();
+    //Llamado de la funcion propiedades
+    propiedades();
+    //Dejemos el resultado en el div que ahora lo manejamos con  la variable  R
+    R.innerHTML=" La Restar de los nuemros es:"+(n1-n2);
+    }
+    function Multiplacar(){
+      [n1,n2]=obtenerValores();
+    //Llamado de la funcion propiedades
+    propiedades();
+    //Dejemos el resultado en el div que ahora lo manejamos con la variable R
+    R.innerHTML=" la multiplicacion de los numeros es:"+(n1*n2);
+    }
+    
+    function Division(){
+    [n1,n2]=obtenervalores();
+    //Llamado de la funcion propiedades
+    propiedades();
+    if (n2===0)
+    d="Error: division por 0";
+    else
+    d=n1/n2;
+    //Dejemos el resultado en el div que ahora lo manejamos con  la variable R
+    R.innerHTML=" La division de los numeros es:"+(d);
+    }
+    
+    function Potenciacion(){
+      [n1,n2]=obtenerValores();
+    //Llamado de la funcion propiedades
+    propiedades();
+    //Dejemos el resultado en el div que ahora lo manejamos con la  variable R
+    R.innerHTML=" La potencia de los numeros es:"+(Math.pow(n1,n2));
+    }
+    
+    function Concatenacion(){
+    //Extraemos los numeros sin convertirlos a entero para concatenarlos
+    n1=document.getElementById("numero1").value;
+    n2=document.getElementById("numero2").value;
+    //Llamado de la funcion propiedades
+    propiedades();
+    //Dejamos el resultado en el div que ahora lo manejamos con la variable R
+    R.innerHTML=" la concatenacion de los numeros es:"+(n1+n2);
+    }
+    function Instruccion_If (){
+      [n1,n2]=obtenerValores();
+    //Llamado de la funcion propiedades
+    propiedades();
+    //Dejamos el mensaje en el div que ahora lo manejamos con  la variable R
+    R.innerHTML=" Ejemplo con instruccion_If usuando sweetalert";
+    if (n1>n2){
+      swal("Mensaje", "n1 es mayor a n2");
+    }
+    else if(n1==n2){
+      swal("Mensaje", "n1 es igual a n2" ,"success");
+    }
+    else {
+    swal ({
+    title:"Mensaje",
+    text:"n1 es menor que n2",
+    icon:"info",
+    button:"salir",
+    });
+    }
+  
+    }
+    function Instruccion_For(){
+      [n1,n2]=obtenerValores();
+      //Llamado de la funcion propiedades
+      propiedades();
+    contador=0;
+    //Usamos el for (para)
+    for(i=n1;i<=n2;i++){
+    contador=contador+1;
+    }
+    //Dejamos el mensaje en el div que ahora lo manejamos con la variable R
+    R.innerHTML="Los ciclos que realizo el for fueron:"+contador;
+    }
+    
+    function Instruccion_switch(){
+      [n1,n2]=obtenerValores();
+      //Llamado de la funcion propiedade
+      propiedades();
+      //Dejamos el mensaje en el div que ahora lo manejamos con la variables R
+      R.innerHTML="Ejemplo con instruccion switch usuando sweetaleer";
+      switch(n1){
+    case 1:
+      swal("Mensaje", "n1 tiene un valor de 1");
+      break;
+      case 2:
+      swal("Mensaje", "n1 tiene un valor de 2" ,"success");
+      break;
+      default:
+        swal({
+        title:"Mensaje",
+        text:"n1 tiene un valor mayor 2",
+        icon:"info",
+        button:"salir",
+      });
+    break;
+    
+       }
+    
+      }
+  
+</script>
+
+
+</body>
+</html>

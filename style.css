@@ -1,0 +1,36 @@
+
+body{
+
+   background: url("fondo.html"); 
+}
+
+
+h1{
+    text-align: center;
+    color: rgb(11, 124, 224);
+
+}
+
+form{
+    text-align: center;
+    color: rgb(6, 226, 255);
+font-size: 30px
+
+
+}
+
+h2{
+
+text-align: center;  
+color: rgb(3, 159, 215);
+}
+
+
+
+
+
+input[type=button]{
+  background-color: rgb(33, 160, 132);
+
+}
+
